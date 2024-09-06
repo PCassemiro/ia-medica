@@ -1,0 +1,55 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    width: 100vh;
+}
+
+body{
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    background-color: rgb(255, 50, 50);
+}
+
+input{
+    height: 5vh;
+    border: none;
+}
+
+p{
+    margin-bottom: 5px;
+}
+
+.Dados{
+    display: flex;
+    flex-direction: column;
+}
+.NomeData{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    flex-direction: column;
+
+}
+
+.BairroRua{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    flex-direction: column;
+}
+
+.Sintomas{
+    flex-direction: column;
+}
+
+.Sintomas input{
+height: 20vh;
+}
+
+#botao{
+    background-color: rgb(255, 50, 50);
+    border-radius: 5px;
+}
