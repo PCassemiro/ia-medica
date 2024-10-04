@@ -10,24 +10,18 @@
 <body>
 <form action="">
     <div class="Dados">
-        <h1>Obtenha assistência médica</h1>
+        <!-- <header>Obtenha assistência médica</header> -->
         <div class="NomeData">
-            <p>Nome:*</p>
+            <strong><p>Nome:*</p></strong>
             <input type="text" id="nome" name="Nome" placeholder="Nome completo" required>
-            <p>Data de nascimento:*</p>
+            <strong><p>Data de nascimento:*</p></strong>
             <input type="date" id="data" name="Data" required>
         </div>
-        <div class="BairroRua">
-            <p>Bairro:*</p>
-            <input type="text" id="local" name="Bairro" placeholder="Bairro onde reside" required>
-            <p>Rua:*</p>
-            <input type="text" id="local" name="Rua" placeholder="Rua onde reside" required>
-        </div>
         <div class="Sintomas">
-            <p>Sitomas:*</p>
-            <input type="text" id="descricao" name="Descrição" placeholder="Descreveva seus sitomas" required>
+            <strong><p>Sitomas:*</p></strong>
+            <input type="text" id="descricao" name="Descrição" placeholder="Descreveva os sitomas" required>
         </div>
-        <input type="button" id="botao" value="Obter assistência médica">
+        <input type="submit" id="botao" value="Enviar">
     </div>
 </form>
 </body>

@@ -1,55 +1,30 @@
-*{
+body{
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
-    width: 100vh;
-}
-
-body{
     align-items: center;
-    justify-content: center;
-}
-
-h1{
-    background-color: rgb(255, 50, 50);
-}
-
-input{
+    flex-direction: column;
+}input{
     height: 5vh;
     border: none;
-}
-
-p{
-    margin-bottom: 5px;
-}
-
-.Dados{
+    margin-bottom: 1px;
+}p{
+    margin-bottom: 1px;
+}.Dados{
     display: flex;
     flex-direction: column;
-}
-.NomeData{
-    display: flex;
-    gap: 20px;
-    width: 100%;
+    width: 100vh;
+    align-items: center;
+}.NomeData{
+    height: 20vh;
+}.Sintomas{
     flex-direction: column;
-
-}
-
-.BairroRua{
-    display: flex;
-    gap: 20px;
-    width: 100%;
-    flex-direction: column;
-}
-
-.Sintomas{
-    flex-direction: column;
-}
-
-.Sintomas input{
-height: 20vh;
-}
-
-#botao{
+}.Sintomas input{
+    height: 20vh;
+}#botao{
     background-color: rgb(255, 50, 50);
+    color: aliceblue;
     border-radius: 5px;
+    width: 50vh;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
 }
