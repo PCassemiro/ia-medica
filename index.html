@@ -8,21 +8,25 @@
     <script src="script.js"></script>
 </head>
 <body>
-<form action="">
+<form action="https://api.sheetmonkey.io/form/8cJWfbgXmoRrJ38jYJ63Lx" method="post">
+    <!-- <strong><nav>DiagnostIA</nav></strong> -->
+    <strong><nav>
+        <p class="nave">DiagnostIA</p>
+        <p1> I.A de diagnósticos rapidos</p1>
+    </nav></strong>
     <div class="Dados">
         <!-- <header>Obtenha assistência médica</header> -->
-        <div class="NomeData">
-            <strong><p>Nome:*</p></strong>
-            <input type="text" id="nome" name="Nome" placeholder="Nome completo" required>
-            <strong><p>Data de nascimento:*</p></strong>
-            <input type="date" id="data" name="Data" required>
-        </div>
         <div class="Sintomas">
+            <strong><p>Nome do paciente:*</p></strong>
+            <input type="text" id="nome" name="Nome" placeholder="Nome completo" required>
             <strong><p>Sitomas:*</p></strong>
             <input type="text" id="descricao" name="Descrição" placeholder="Descreveva os sitomas" required>
+            <strong><p>Previa sitomas:*</p></strong>
+            <p id="resultado">Previa sera gerada após envio das informações</p>
         </div>
-        <input type="submit" id="botao" value="Enviar">
+       
     </div>
+    <input type="submit" id="botao" value="Enviar">
 </form>
 </body>
 </html>

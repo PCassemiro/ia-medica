@@ -3,26 +3,44 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
+    flex-wrap:wrap ;
+    margin: 0px;
+}form{
+    width: 100%;
+}nav{
+    background-color: rgb(2, 175, 255);
+    color: #000000;  
+    width: 100%;
+    height: 20vh;
+    align-items: center;
+    justify-items: center;
+}.nave{
+    font-size: 50px;
+    
 }input{
     height: 5vh;
     border: none;
     margin-bottom: 1px;
 }p{
     margin-bottom: 1px;
+    margin: 0px;
+}p1{
+    color: rgba(77, 75, 75, 0.863);
 }.Dados{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100vh;
     align-items: center;
-}.NomeData{
+}.Nome{
     height: 20vh;
-}.Sintomas{
-    flex-direction: column;
-}.Sintomas input{
-    height: 20vh;
+}#resultado{
+    border-color: black;
+    height:20vh ;
+    color: rgba(0, 0, 0, 0.308);
 }#botao{
-    background-color: rgb(255, 50, 50);
-    color: aliceblue;
+    display: flex;
+    background-color: rgb(2, 175, 255);
+    color: rgb(0, 0, 0);
     border-radius: 5px;
     width: 50vh;
     margin-top: 2vh;
