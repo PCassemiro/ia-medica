@@ -1,48 +1,79 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}.container {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #3b82f6, #2563eb);
     display: flex;
     align-items: center;
-    flex-direction: column;
-    flex-wrap:wrap ;
-    margin: 0px;
-}form{
+    justify-content: center;
+    padding: 1rem;
+}.form-container {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 2rem;
     width: 100%;
-}nav{
-    background-color: rgb(2, 175, 255);
-    color: #000000;  
+    max-width: 28rem;
+}h1 {
+    color: #2563eb;
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}.subtitle {
+    color: #4b5563;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}.form-group {
+    margin-bottom: 1.5rem;
+}label {
+    display: block;
+    color: #374151;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}input, textarea {
     width: 100%;
-    height: 20vh;
-    align-items: center;
-    justify-items: center;
-}.nave{
-    font-size: 50px;
-    
-}input{
-    height: 5vh;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}textarea {
+    min-height: 100px;
+    resize: vertical;
+}button {
+    width: 100%;
+    background-color: #2563eb;
+    color: white;
     border: none;
-    margin-bottom: 1px;
-}p{
-    margin-bottom: 1px;
-    margin: 0px;
-}p1{
-    color: rgba(77, 75, 75, 0.863);
-}.Dados{
+    border-radius: 0.25rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}button:hover {
+    background-color: #1d4ed8;
+}.icon{
+    height: 20px;
+    width: 20px;
+   align-content: center;
+}.pdf {
+    background-color: rgb(129, 129, 129);
+    /* display: none; */
+}.pdf:hover {
+    background-color: rgb(109, 109, 109);
+}.box-button {
     display: flex;
-    flex-direction: row;
-    width: 100vh;
+    flex-direction: column;
+    gap: 5px;
+}.centralizar{
+    display: flex;
+    justify-content: center;
     align-items: center;
-}.Nome{
-    height: 20vh;
-}#resultado{
-    border-color: black;
-    height:20vh ;
-    color: rgba(0, 0, 0, 0.308);
-}#botao{
-    display: flex;
-    background-color: rgb(2, 175, 255);
-    color: rgb(0, 0, 0);
-    border-radius: 5px;
-    width: 50vh;
-    margin-top: 2vh;
-    margin-bottom: 5vh;
+    gap: 5px;
 }
