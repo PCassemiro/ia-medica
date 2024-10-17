@@ -18,7 +18,7 @@ body, html {
     width: 100%;
     max-width: 28rem;
 }h1 {
-    color: linear-gradient(to right, #30cfd0, #330867);
+    color: #2563eb;
     font-size: 1.875rem;
     font-weight: bold;
     margin-bottom: 1.5rem;
@@ -67,6 +67,8 @@ body, html {
     /* display: none; */
 }.pdf:hover {
     background-color: rgb(109, 109, 109);
+    cursor: no-drop;
+    /* cursor: pointer; */
 }.box-button {
     display: flex;
     flex-direction: column;
