@@ -79,7 +79,7 @@ body, html {
     align-items: center;
     gap: 5px;
 }
-
+/* Botão de loader: */
 .loader {
     animation: spin 2s linear infinite;
   }

@@ -112,7 +112,7 @@ async function chamarGroqAPI() {
     //*-IF/ELSE pra se algum dado estiver vazio, emitir alerta, porém se os mesmos estiverem preenchidos o programa roda normalmente   
     if(nome!='' && sint!=''){
         prev.innerHTML='CARREGANDO...'
-        consulta.innerHTML=`<img class="icon loader" src="icon_loading.png" alt="">Loading...`
+        consulta.innerHTML=`<img class="icon loader" src="img/icon_loading.png" alt="">Loading...`
         // consulta.style.animation= "infinite";
 
         try {
@@ -136,7 +136,7 @@ async function chamarGroqAPI() {
             consulta.innerHTML=`<img class="icon" src="icon_consulta.png" alt="">Consultar`
             //*-Configurações do botão PDF 
             pdf.style.backgroundColor= "red";
-            pdf.innerHTML=`<img class="icon" src="icon_pdf.png" alt=""> Gerar PDF`
+            pdf.innerHTML=`<img class="icon" src="img/icon_pdf.png" alt=""> Gerar PDF`
             pdf.style.cursor= "pointer";
             pdf.removeAttribute("disabled");
         } catch (error) {
