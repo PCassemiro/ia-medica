@@ -42,27 +42,20 @@ function GerarPDF() {
     doc.save("Relatório.pdf");
 }
 
-// todo-Chave e Endpoint da API OpenAI
-const apiKey = process.env.OPENAI_API_KEY;; //! Atualize com a chave correta
-const endpoint = 'https://api.openai.com/v1/chat/completions';
+// todo-Chave e Endpoint da API Hugging Face
+const apiKey = 'LA-509eb2f7705a49f09640e701ec0347d5b0e091a7725a40098e5395f39d64ee40';  //! Atualize com a chave correta
+const endpoint = 'https://api-inference.huggingface.co/models/meta/llama-3'; // Endpoint do modelo LLaMA 3
 console.log("API Key:", apiKey); // Verifique se a chave está correta
-
 
 // todo-Função que monta o corpo da requisição para a API
 function requestBody(text) {
     return {
-        "model":"gpt-3.5-turbo",
-        "messages": [
-            {
-                "role": "user",
-                "content": `Considerando os sintomas apresentados, crie uma tabela com o nome das 3 possíveis doenças e suas porcentagens de probabilidade do paciente ter aquela doença: ${text}. Caso seja digitado algo fora do contexto médico, retorne a seguinte mensagem: "Nós só podemos conversar sobre sintomas e diagnosticos.`
-            }
-        ]
+        inputs: `Considerando os sintomas apresentados, crie uma tabela com o nome das 3 possíveis doenças e suas porcentagens de probabilidade do paciente ter aquela doença: ${text}. Caso seja digitado algo fora do contexto médico, retorne a seguinte mensagem: "Nós só podemos conversar sobre sintomas e diagnósticos."`
     };
 }
 
 // todo-Função ligada ao segundo botão, que chama a API e libera o botão PDF
-async function chamarOpenAIAPI() {
+async function chamarIA() {
     var sint = document.getElementById('sintomas').value;
     var prev = document.getElementById('previa');
     var nome = document.getElementById('nome').value;
@@ -89,8 +82,8 @@ async function chamarOpenAIAPI() {
             }
 
             const data = await response.json();
-            console.log('Resposta da API OpenAI:', data);
-            prev.innerHTML = data.choices[0].message.content; //! Caminho ajustado para OpenAI
+            console.log('Resposta da API LLaMA 3:', data);
+            prev.innerHTML = data.generated_text; //! Ajuste dependendo da resposta da API
             consulta.innerHTML = `<img class="icon" src="icon_consulta.png" alt="">Consultar`;
 
             //* Configuração do botão PDF
@@ -99,8 +92,8 @@ async function chamarOpenAIAPI() {
             pdf.style.cursor = "pointer";
             pdf.removeAttribute("disabled");
         } catch (error) {
-            window.alert('Erro ao chamar a API OpenAI');
-            console.error('Erro ao chamar a API OpenAI:', error);
+            window.alert('Erro ao chamar a API LLaMA 3');
+            console.error('Erro ao chamar a API LLaMA 3:', error);
         }
     } else {
         window.alert('[ALERTA] Preencha os dados primeiro!');
