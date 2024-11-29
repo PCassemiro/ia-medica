@@ -43,7 +43,7 @@ function GerarPDF() {
 }
 
 // todo-Chave e Endpoint da API OpenAI
-const apiKey = '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'; //! Atualize com a chave correta
+const apiKey = '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'; //! Atualize com a chave correta
 const endpoint = 'https://api.openai.com/v1/chat/completions';
 
 // todo-Função que monta o corpo da requisição para a API
