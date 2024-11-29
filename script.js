@@ -1,10 +1,3 @@
-// Função de cada comentário
-// todo-Pendentes e Funções
-//!-Importantes/Critico
-//?-Dúvidas/Questões
-//*-Explicação
-////////////////////
-
 // todo-Função ligada ao primeiro botão, que permite gerar um arquivo PDF
 function GerarPDF() {
     var nome = document.getElementById('nome');
