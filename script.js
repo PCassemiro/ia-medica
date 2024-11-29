@@ -96,7 +96,7 @@ function requestBody(text) {
         "messages": [
             {
             "role": "user",
-            "content": `Com base nos sintomas a seguir, informe 3 possíveis doenças que um paciente pode estar: ${text}. Responda apenas com as doenças e estruture informando o nome da sugestão, uma breve informação sobre e a probabilidade em porcentagem de ser aquela doença. Estilize a resposta com css.`
+            "content": `Com base nos sintomas a seguir, informe 3 possíveis doenças que um paciente pode estar: ${text}. A resposta deve conter a seguinte estrutura: Nome da doença, informação breve e probabilidade. Não coloque o titulo em negrito.`
             }
         ],
         "model": "llama3-8b-8192"
