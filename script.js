@@ -96,7 +96,7 @@ function requestBody(text) {
         "messages": [
             {
             "role": "user",
-            "content": `Informe as top 3 possíveis doenças para os seguintes sintomas: ${text}, começe a resposta sempre com um 'Com base' e essa resposta tem que auxiliar o médico`
+            "content": `Com base nos sintomas a seguir, informe 3 possíveis doenças que um paciente pode estar: ${text}. Estruture informando o nome da sugestão, uma breve informação sobre e a probabilidade em porcentagem de ser aquela doença. Qualquer assunto além do contexto médico não deve ser respondido, apenas diga "Apenas contexto médico".`
             }
         ],
         "model": "llama3-8b-8192"
