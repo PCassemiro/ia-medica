@@ -96,7 +96,11 @@ function requestBody(text) {
         "messages": [
             {
             "role": "user",
-            "content": `Com base nos sintomas a seguir, informe 3 possíveis doenças que um paciente pode estar: ${text}. A resposta deve conter a seguinte estrutura no texto: Nome da doença, pula uma linha, palavra "Probabilidade", seguido da probabilidade de ser aquela doença, pula uma linha, uma informação breve sobre a doença e seguido com o possível tratamento ou cura. Não coloque o titulo em negrito e não coloque mais nada além dessa estrutura que falei. É DE EXTREMA IMPORTANCIA QUE, SE FOR DIGITADO ALGO FORA DO CONTEXTO MÉDICO, A RESPOSTA SER "Por favor, digite um sintoma para começarmos o diagnostico". Além disso,  tanto a pergunta quanto a resposta SEMPRE devem ser em português e em hipotese nenhuma em inglês. Caso o sintoma seja digitado em inglês, solicite que seja escrito em português-BR.`
+            "content": `Com base nos sintomas a seguir, informe 3 possíveis doenças que um paciente pode estar: ${text}. 
+            A resposta deve conter a seguinte estrutura no texto: Nome da doença, pula uma linha, palavra "Probabilidade", seguido da probabilidade de ser aquela doença, pula uma linha, uma informação breve sobre a doença e seguido com o possível tratamento ou cura. 
+            Não coloque o titulo em negrito e não coloque mais nada além dessa estrutura que falei. 
+            É DE EXTREMA IMPORTANCIA QUE, SE FOR DIGITADO ALGO FORA DO CONTEXTO MÉDICO, A RESPOSTA SER "Por favor, digite um sintoma para começarmos o diagnostico". 
+            Além disso,  tanto a pergunta quanto a resposta SEMPRE devem ser em português e em hipotese nenhuma em inglês. Caso o sintoma seja digitado em inglês, solicite que seja escrito em português-BR.`
             }
         ],
         "model": "llama3-8b-8192"
