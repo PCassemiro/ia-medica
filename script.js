@@ -43,7 +43,7 @@ function GerarPDF() {
 }
 
 // todo-Chave e Endpoint da API OpenAI
-const apiKey = ''; //! Atualize com a chave correta
+const apiKey = process.env.OPENAI_API_KEY;; //! Atualize com a chave correta
 const endpoint = 'https://api.openai.com/v1/chat/completions';
 console.log("API Key:", apiKey); // Verifique se a chave está correta
 
