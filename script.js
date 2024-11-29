@@ -49,7 +49,7 @@ const endpoint = 'https://api.openai.com/v1/chat/completions';
 // todo-Função que monta o corpo da requisição para a API
 function requestBody(text) {
     return {
-        "model": "gpt-4",
+        "model":"gpt-3.5-turbo",
         "messages": [
             {
                 "role": "user",
