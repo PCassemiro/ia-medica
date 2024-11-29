@@ -65,6 +65,89 @@ function requestBody(text) {
     }
 }
 ```
+### Código responsável por gerar o PDF
+```js
+function GerarPDF(){
+    var nome= document.getElementById('nome');
+    var sintomas= document.getElementById('sintomas');
+    var prev= document.getElementById('previa');
+    var pdf=  document.querySelector('.pdf');
+    var dataAtual= new Date;//!-Variavel pra permitir manipular data
+    var mes= dataAtual.getMonth()+1;//!-variavel pra pegar o mês(porém em numero)
+    //*Conversão do meses
+    switch (mes) {
+      case 1:
+          mes=('Janeiro');
+          break;
+      case 2:
+          mes=("Fevereiro");
+          break;
+      case 3:
+          mes=("Março");
+          break;
+      case 4:
+          mes=("Abril");
+          break;
+      case 5:
+          mes=("Maio");
+          break;
+      case 6:
+          mes=("Junho");
+          break;
+      case 7:
+          mes=("Julho");
+          break;
+      case 8:
+          mes=("Agosto");
+          break;
+      case 9:
+          mes=("Setembro");
+          break;
+      case 10:
+          mes=("Outubro");
+          break;
+      case 11:
+          mes=("Novembro");
+          break;
+      case 12:
+          mes=("Dezembro");
+          break;
+      default:
+          mes=("Mês inválido");
+  }
+    //*Criação das variaveis "data", "hora" e "respostaPDF"
+    var data= `dia ${dataAtual.getDate()} de ${mes} do ano de ${dataAtual.getFullYear()}`;
+    var hora= `${dataAtual.getHours().toString().padStart(2, '0')}:${dataAtual.getMinutes().toString().padStart(2, '0')}`;//!-Tranformar hora e minuto em uma string e faz com que as mesmas sempre começem com 00
+    //?-Tem como oitmizaer a linha de código a cima?
+    var respostaPDF=`O Sr(a) ${nome.value}, consultado no dia ${data} as ${hora} horas, que apresenta os seguinte(s) sintoma(s): "${sintomas.value}". ${prev.value}`;//todo-Talvez adicionar em breve o cpf do paciente
+   //* Acessando a função jsPDF do pacote
+   const { jsPDF } = window.jspdf;
+   //* Criando uma nova instância do jsPDF
+   const doc = new jsPDF();
+   //* Adicionando um título ao PDF
+   doc.text("Relatório médico", 10, 10);
+   //* Adicionando conteúdo
+   const larguraMaxima = 180;
+   const linhas = doc.splitTextToSize(respostaPDF, larguraMaxima);
+   doc.setFontSize(12);
+    //* Configurando a posição inicial (margem superior) e espaçamento
+    let margemSuperior = 20; //! Posição Y inicial
+    const espacamentoEntreLinhas = 10; //! Espaçamento entre as linhas
+    //* Adiciona o texto no PDF (quebrado em várias linhas)
+    linhas.forEach(function(linha, index) {
+      //* Se a posição ultrapassar o limite da página, cria uma nova página
+      if (margemSuperior > 280) { //! 280 é o limite da página antes de adicionar uma nova
+        doc.addPage();
+        //* Reseta a posição na nova página
+        margemSuperior = 20;
+      }
+      doc.text(linha, 10, margemSuperior); //! Adiciona a linha na posição X=10, Y=margemSuperior
+      margemSuperior += espacamentoEntreLinhas; //! Move para a próxima linha
+    });
+   //*Gera e salva o arquivo
+   doc.save("Relatório.pdf");
+}
+```
 ### Conclusões
 Este projeto é uma solução simples, porém objetiva, desenvolvida para apoiar o trabalho dos profissionais da saúde no dia a dia. **Este site destina-se ao uso exclusivo de médicos e não deve ser utilizado por pacientes.**
 
