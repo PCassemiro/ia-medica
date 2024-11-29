@@ -148,6 +148,76 @@ function GerarPDF(){
    doc.save("Relatório.pdf");
 }
 ```
+### CÓDIGO IA
+```js
+//todo-Faz a requisição à API Groq AI
+const apiKey = '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';//!Chave de acesso
+//todo-Endpoint da API Groq
+const endpoint = 'https://api.groq.com/openai/v1/chat/completions';
+//todo-Função que pega os sintoma(s) e faz a pergunta a IA
+function requestBody(text) {
+    return {
+        "messages": [
+            {
+            "role": "user",
+            "content": `Com base nos sintomas a seguir, informe 3 possíveis doenças que um paciente pode estar: ${text}. 
+            A resposta deve conter a seguinte estrutura no texto: Nome da doença, pula uma linha, palavra "Probabilidade", seguido da probabilidade de ser aquela doença, pula uma linha, uma informação breve sobre a doença e seguido com o possível tratamento ou cura. 
+            Não coloque o titulo em negrito e não coloque mais nada além dessa estrutura que falei. 
+            É DE EXTREMA IMPORTANCIA QUE, SE FOR DIGITADO ALGO FORA DO CONTEXTO MÉDICO, A RESPOSTA SER "Por favor, digite um sintoma para começarmos o diagnostico". 
+            Além disso,  tanto a pergunta quanto a resposta SEMPRE devem ser em português e em hipotese nenhuma em inglês. Caso o sintoma seja digitado em inglês, solicite que seja escrito em português-BR.`
+            }
+        ],
+        "model": "llama3-8b-8192"
+    }
+}
+//todo-Função ligada ao segundo botão, que permite pegar resposta da IA e liberar botão de pdf
+async function chamarGroqAPI() {
+    var sint= document.getElementById('sintomas').value;
+    var prev= document.getElementById('previa');
+    var nome= document.getElementById('nome').value;
+    var pdf=  document.querySelector('.pdf');
+    var consulta=  document.querySelector('.consulta');
+    //!Lembre que o botão de pdf só é liberado após esse permitir
+    //*-IF/ELSE pra se algum dado estiver vazio, emitir alerta, porém se os mesmos estiverem preenchidos o programa roda normalmente   
+    if(nome!='' && sint!=''){
+        prev.innerHTML='CARREGANDO...'
+        consulta.innerHTML=`<img class="icon loader" src="img/icon_loading.png" alt="">Loading...`
+        // consulta.style.animation= "infinite";
+
+        try {
+            const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                //*-Chave de autenticação
+                'Authorization': `Bearer ${apiKey}`, 
+                //*-Tipo de conteúdo
+                'Content-Type': 'application/json'  
+            },
+            //*-Enviar o payload como JSON
+            body: JSON.stringify(requestBody(sint)) 
+            });
+            if (!response.ok) {
+            throw new Error(`Erro: ${response.status} - ${response.statusText}`);
+            }
+            const data = await response.json(); // Processar a resposta
+            console.log('Resposta da API Groq:', data); // Exibir a resposta no console
+            prev.innerHTML= data.choices[0].message.content;//!Caminho
+            consulta.innerHTML=`<img class="icon" src="icon_consulta.png" alt="">Consultar`
+            //*-Configurações do botão PDF 
+            pdf.style.backgroundColor= "red";
+            pdf.innerHTML=`<img class="icon" src="img/icon_pdf.png" alt=""> Gerar PDF`
+            pdf.style.cursor= "pointer";
+            pdf.removeAttribute("disabled");
+        } catch (error) {
+            window.alert('Erro ao chamar a API Groq')
+            console.error('Erro ao chamar a API Groq:', error); // Tratamento de erros
+        }
+    }else{
+        window.alert('[ALERTA] Preencha os dados primeiro!')
+      }
+}
+
+```
 ### Conclusões
 Este projeto é uma solução simples, porém objetiva, desenvolvida para apoiar o trabalho dos profissionais da saúde no dia a dia. **Este site destina-se ao uso exclusivo de médicos e não deve ser utilizado por pacientes.**
 
