@@ -51,20 +51,7 @@ O CSS define o design do projeto e inclui uma animação de carregamento exibida
 ```
 ### Código JS
 O JavaScript controla a ativação dos estilos CSS, a comunicação com a IA para obtenção dos resultados, a geração de dados de hora/data e a criação do PDF.
-```js
-//Função que pega os sintoma(s) e faz a pergunta a IA
-function requestBody(text) {
-    return {
-        "messages": [
-            {
-            "role": "user",
-            "content": `Informe as top 3 possíveis doenças para os seguintes sintomas: ${text}, começe a resposta sempre com um 'Com base' e essa resposta tem que auxiliar o médico`
-            }
-        ],
-        "model": "llama3-8b-8192"
-    }
-}
-```
+
 ### Código responsável por gerar o PDF
 ```js
 function GerarPDF(){
