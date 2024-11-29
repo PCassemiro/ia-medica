@@ -43,9 +43,8 @@ function GerarPDF() {
 }
 
 // todo-Chave e Endpoint da API Hugging Face
-const apiKey = 'LA-509eb2f7705a49f09640e701ec0347d5b0e091a7725a40098e5395f39d64ee40';  //! Atualize com a chave correta
-const endpoint = 'https://api-inference.huggingface.co/models/meta/llama-3'; // Endpoint do modelo LLaMA 3
-console.log("API Key:", apiKey); // Verifique se a chave está correta
+const api_url = "https://api-inference.huggingface.co/models/meta/llama-3";
+const api_key = "LA-509eb2f7705a49f09640e701ec0347d5b0e091a7725a40098e5395f39d64ee40";
 
 // todo-Função que monta o corpo da requisição para a API
 function requestBody(text) {
@@ -68,10 +67,10 @@ async function chamarIA() {
         consulta.innerHTML = `<img class="icon loader" src="img/icon_loading.png" alt="">Loading...`;
 
         try {
-            const response = await fetch(endpoint, {
+            const response = await fetch(api_url, {  // Usando a variável correta 'api_url'
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${apiKey}`,
+                    'Authorization': `Bearer ${api_key}`,  // Corrigido para 'api_key'
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(requestBody(sint))
@@ -83,7 +82,14 @@ async function chamarIA() {
 
             const data = await response.json();
             console.log('Resposta da API LLaMA 3:', data);
-            prev.innerHTML = data.generated_text; //! Ajuste dependendo da resposta da API
+
+            // Verifique a resposta da API para garantir que os dados retornados sejam no formato esperado
+            if (data.generated_text) {
+                prev.innerHTML = data.generated_text; // Ajuste no campo de resposta
+            } else {
+                prev.innerHTML = "Erro: A resposta da API não contém a informação esperada.";
+            }
+
             consulta.innerHTML = `<img class="icon" src="icon_consulta.png" alt="">Consultar`;
 
             //* Configuração do botão PDF
@@ -99,7 +105,6 @@ async function chamarIA() {
         window.alert('[ALERTA] Preencha os dados primeiro!');
     }
 }
-
 
 
 
