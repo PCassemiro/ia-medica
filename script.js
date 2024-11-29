@@ -96,7 +96,7 @@ function requestBody(text) {
         "messages": [
             {
             "role": "user",
-            "content": `Com base nos sintomas a seguir, informe 3 possíveis doenças que um paciente pode estar: ${text}. Estruture informando o nome da sugestão, uma breve informação sobre e a probabilidade em porcentagem de ser aquela doença. Qualquer assunto além do contexto médico não deve ser respondido, apenas diga "Apenas contexto médico".`
+            "content": `Com base nos sintomas a seguir, informe 3 possíveis doenças que um paciente pode estar: ${text}. Responda apenas com as doenças e estruture informando o nome da sugestão, uma breve informação sobre e a probabilidade em porcentagem de ser aquela doença. Estilize a resposta com css.`
             }
         ],
         "model": "llama3-8b-8192"
